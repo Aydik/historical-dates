@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -26,6 +28,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
+                // eslint-disable-next-line @typescript-eslint/no-require-imports
                 plugins: [require('autoprefixer')],
               },
             },
