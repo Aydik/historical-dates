@@ -7,8 +7,8 @@ const breakpoints: Record<Breakpoint, number> = {
   sm: 576,
   md: 768,
   lg: 992,
-  xl: 1200,
-  xxl: 1440,
+  xl: 1440,
+  xxl: 1600,
 };
 
 const getBreakpoint: () => Breakpoint = () => {

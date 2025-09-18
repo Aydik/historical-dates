@@ -6,15 +6,37 @@ import { Title } from './ui/Title';
 
 export const HistoricalDates: FC = () => {
   const breakpoint = useBreakpoint();
-  const isXXLBreakpoint = compareBreakpoints(breakpoint, 'xxl');
+  const isXLBreakpoint = compareBreakpoints(breakpoint, 'xl');
+  let paddingTop: number;
+
+  switch (breakpoint) {
+    case 'xxl':
+      paddingTop = 170;
+      break;
+    case 'xl':
+    case 'lg':
+      paddingTop = 120;
+      break;
+    case 'md':
+      paddingTop = 100;
+      break;
+    case 'sm':
+      paddingTop = 80;
+      break;
+    case 'xs':
+    default:
+      paddingTop = 60;
+      break;
+  }
 
   return (
     <div
       className={classNames(styles.historicalDates, {
-        [styles.withBorders]: isXXLBreakpoint,
+        [styles.withBorders]: isXLBreakpoint,
       })}
+      style={{ paddingTop: paddingTop }}
     >
-      <Title breakpoint={breakpoint} />
+      <Title />
     </div>
   );
 };
