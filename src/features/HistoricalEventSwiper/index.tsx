@@ -62,7 +62,7 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
 
   return (
     <div
-      className="swiper-container"
+      className="event-swiper"
       style={{
         gridTemplateColumns: hasNav ? `${paddingHorizontal}px auto ${paddingHorizontal}px` : 'auto',
       }}
@@ -72,11 +72,12 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
           <NavButton onClick={goPrev} type="prev" />
         </div>
       )}
-      <div className="swiper">
+      <div className="swiper-container">
         <Swiper
           slidesPerView="auto"
           speed={800}
           spaceBetween={spaceBetween}
+          grabCursor={true}
           onSwiper={swiper => {
             swiperRef.current = swiper;
             updateNavigationState(swiper);
