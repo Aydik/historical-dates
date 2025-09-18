@@ -1,0 +1,17 @@
+.eventWrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.date{
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--color-blue);
+  line-height: 1.2em;
+}
+
+.description{
+  color: var(--color-black-blue);
+  line-height: 1.5em;
+}
