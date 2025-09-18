@@ -1,0 +1,25 @@
+.titleWrapper {
+  position: relative;
+
+  .title {
+    margin: 0;
+    color: var(--color-black-blue);
+    font-weight: bold;
+    line-height: 1.2em;
+
+    &.withLine {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 7px;
+        bottom: 7px;
+        left: 0;
+        width: 5px;
+        background: linear-gradient(
+                        var(--color-blue) 0,
+                        var(--color-fuschia) 100%,
+        );
+      }
+    }
+  }
+}
