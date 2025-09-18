@@ -77,7 +77,6 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
           slidesPerView="auto"
           speed={800}
           spaceBetween={spaceBetween}
-          grabCursor={true}
           onSwiper={swiper => {
             swiperRef.current = swiper;
             updateNavigationState(swiper);
