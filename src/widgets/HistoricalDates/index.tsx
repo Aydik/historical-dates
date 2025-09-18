@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import classNames from 'classnames';
 import { useBreakpoint, compareBreakpoints } from '@shared/context/Breakpoints';
 import { Title } from './ui/Title';
+import { SectionPagination } from '@features/SectionPagination';
 import { HistoricalEventSwiper } from '@features/HistoricalEventSwiper';
 
 export const HistoricalDates: FC = () => {
@@ -45,7 +46,7 @@ export const HistoricalDates: FC = () => {
       style={{ paddingTop: paddingTop }}
     >
       <Title paddingHorizontal={paddingHorizontal} />
-      <HistoricalEventSwiper paddingHorizontal={paddingHorizontal} />
+      <SectionPagination />
     </div>
   );
 };

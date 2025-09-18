@@ -8,6 +8,11 @@
   height: 40px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(var(--color-blue-rgb), 0.1);
-  padding-left: 18px;
-  padding-right: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transform: translateX(20%);
+  }
 }
