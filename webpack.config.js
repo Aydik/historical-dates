@@ -20,7 +20,24 @@ module.exports = {
         },
       },
       {
+        test: /\.module\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+              modules: {
+                namedExport: false,
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module\.(sa|sc|c)ss$/,
         use: [
           'style-loader',
           'css-loader',

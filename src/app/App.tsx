@@ -1,10 +1,9 @@
-import React from 'react';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello React with Webpack!</h1>
-      <p>Собрано в WebStorm 🚀</p>
+    <div className={styles.layout}>
+      <div className={styles.content}>123</div>
     </div>
   );
 }
