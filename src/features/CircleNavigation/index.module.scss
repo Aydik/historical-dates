@@ -1,0 +1,11 @@
+.circleWrapper{
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-height: 100vh;
+}
+
+.circle{
+  stroke: rgba(var(--color-black-blue-rgb), 0.2);
+}

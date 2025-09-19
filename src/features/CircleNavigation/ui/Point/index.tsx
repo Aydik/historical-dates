@@ -1,14 +1,17 @@
 import { FC } from 'react';
+import styles from './index.module.scss';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import classNames from 'classnames';
 
 interface Props {
   index: number;
+  name: string;
   rotation: number;
   radius?: number;
   onRef?: (el: SVGGElement | null) => void;
 }
 
-export const Point: FC<Props> = ({ index, rotation, radius = 265, onRef }) => {
+export const Point: FC<Props> = ({ index, name, rotation, radius = 265, onRef }) => {
   const { currentSectionIndex, totalSections, setCurrentSection } = useHistoricalEventsStore();
   const isSelected = currentSectionIndex === index;
   const getPointPosition = (): { x: number; y: number } => {
@@ -21,23 +24,27 @@ export const Point: FC<Props> = ({ index, rotation, radius = 265, onRef }) => {
   const position = getPointPosition();
 
   return (
-    <g
-      ref={onRef}
-      transform={`translate(${position.x}, ${position.y}) rotate(${-rotation})`}
-      cursor="pointer"
-      onClick={() => setCurrentSection(index)}
-    >
-      <circle r="15" fill={isSelected ? 'red' : 'blue'} strokeWidth="2" />
-      <text
-        cursor="pointer"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="white"
-        fontSize="12"
-        fontWeight="bold"
+    <>
+      <g
+        className={classNames(styles.point, {
+          [styles.pointSelected]: isSelected,
+        })}
+        ref={onRef}
+        transform={`translate(${position.x}, ${position.y}) rotate(${-rotation})`}
+        onClick={() => setCurrentSection(index)}
       >
-        {index}
+        <circle className={styles.circle} r="27" />
+        <text className={styles.index}>{index + 1}</text>
+      </g>
+      <text
+        className={styles.name}
+        transform={`translate(${position.x}, ${position.y}) rotate(${-rotation})`}
+        x={47}
+        y={5}
+        opacity={isSelected ? 1 : 0}
+      >
+        {name}
       </text>
-    </g>
+    </>
   );
 };

@@ -1,15 +1,21 @@
 import { useRef, useState, useCallback, FC, useEffect } from 'react';
+import styles from './index.module.scss';
 import { gsap } from 'gsap';
 import { Point } from './ui/Point';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 
-export const CircleNavigation: FC = () => {
+interface Props {
+  radius?: number;
+}
+
+export const CircleNavigation: FC<Props> = ({ radius = 265 }) => {
   const { currentSectionIndex, sections, totalSections } = useHistoricalEventsStore();
 
+  const anglePerPoint = 360 / totalSections;
   const indexRef = useRef<number>(0);
   const circleRef = useRef<SVGSVGElement>(null);
   const pointsRef = useRef<Array<SVGGElement | null>>([]);
-  const [rotation, setRotation] = useState<number>(0);
+  const [rotation, setRotation] = useState<number>(90 - anglePerPoint);
 
   const handlePointRef = useCallback(
     (index: number) => (el: SVGGElement | null) => {
@@ -20,8 +26,6 @@ export const CircleNavigation: FC = () => {
 
   const rotateCircle = useCallback(
     (targetIndex: number): void => {
-      const anglePerPoint = 360 / totalSections;
-
       const direct_steps = indexRef.current - targetIndex;
       const reverse_steps =
         direct_steps > 0 ? direct_steps - totalSections : direct_steps + totalSections;
@@ -53,7 +57,7 @@ export const CircleNavigation: FC = () => {
         });
       }
     },
-    [rotation, totalSections],
+    [anglePerPoint, rotation, totalSections],
   );
 
   useEffect(() => {
@@ -61,35 +65,23 @@ export const CircleNavigation: FC = () => {
   }, [currentSectionIndex, rotateCircle]);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#f0f0f0',
-        padding: '20px',
-        gap: '40px',
-      }}
-    >
-      <div>
-        <div style={{ position: 'relative', width: '600px', height: '600px' }}>
-          <svg
-            ref={circleRef}
-            width="600"
-            height="600"
-            viewBox="-300 -300 600 600"
-            style={{ position: 'absolute' }}
-          >
-            <circle cx="0" cy="0" r="265" fill="none" stroke="#333" strokeWidth="2" />
-
-            {sections.map((section, index) => (
-              <Point key={index} index={index} rotation={rotation} onRef={handlePointRef(index)} />
-            ))}
-          </svg>
-        </div>
-      </div>
+    <div className={styles.circleWrapper}>
+      <svg
+        ref={circleRef}
+        viewBox={`-${radius + 100} -${radius + 100} ${radius * 2 + 200} ${radius * 2 + 200}`}
+      >
+        <circle className={styles.circle} cx="0" cy="0" r={radius} fill="none" strokeWidth="1" />
+        {sections.map((section, index) => (
+          <Point
+            key={index}
+            name={section.name}
+            index={index}
+            radius={radius}
+            rotation={rotation}
+            onRef={handlePointRef(index)}
+          />
+        ))}
+      </svg>
     </div>
   );
 };
