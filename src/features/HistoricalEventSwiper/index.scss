@@ -6,12 +6,12 @@
 }
 
 .swiper-container {
+  overflow: hidden;
   grid-column: 2;
   max-width: 100%;
 }
 
 .swiper-wrapper {
-  overflow: visible;
   cursor: grab;
 }
 

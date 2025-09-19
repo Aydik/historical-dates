@@ -108,12 +108,14 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
             setIsBeginning(false);
             setIsEnd(true);
           }}
-          style={{
-            margin: hasNav ? 'unset' : `0 ${paddingHorizontal}px`,
-          }}
         >
           {visibleEvents.map((event, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              key={index}
+              style={{
+                margin: hasNav ? 'unset' : `0 ${paddingHorizontal}px`,
+              }}
+            >
               <HistoricalEvent event={event} />
             </SwiperSlide>
           ))}
