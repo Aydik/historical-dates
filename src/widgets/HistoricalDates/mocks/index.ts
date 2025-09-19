@@ -2,7 +2,6 @@ import { HistoricalDates } from '@widgets/HistoricalDates/types';
 
 export const HISTORICAL_DATES: HistoricalDates = [
   {
-    index: 1,
     name: 'Спорт',
     events: [
       {
@@ -33,7 +32,6 @@ export const HISTORICAL_DATES: HistoricalDates = [
     ],
   },
   {
-    index: 2,
     name: 'Кино',
     events: [
       {
@@ -63,7 +61,6 @@ export const HISTORICAL_DATES: HistoricalDates = [
     ],
   },
   {
-    index: 3,
     name: 'Литература',
     events: [
       {
@@ -92,7 +89,6 @@ export const HISTORICAL_DATES: HistoricalDates = [
     ],
   },
   {
-    index: 4,
     name: 'Театр',
     events: [
       {
@@ -119,7 +115,6 @@ export const HISTORICAL_DATES: HistoricalDates = [
     ],
   },
   {
-    index: 5,
     name: 'Политика',
     events: [
       {
@@ -146,7 +141,6 @@ export const HISTORICAL_DATES: HistoricalDates = [
     ],
   },
   {
-    index: 6,
     name: 'Наука',
     events: [
       {

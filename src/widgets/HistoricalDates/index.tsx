@@ -47,6 +47,7 @@ export const HistoricalDates: FC = () => {
     >
       <Title paddingHorizontal={paddingHorizontal} />
       <SectionPagination />
+      <HistoricalEventSwiper paddingHorizontal={paddingHorizontal} />
     </div>
   );
 };

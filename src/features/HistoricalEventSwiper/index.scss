@@ -2,6 +2,7 @@
   position: relative;
   max-width: 100%;
   display: grid;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .swiper-container {

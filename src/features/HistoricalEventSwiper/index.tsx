@@ -1,5 +1,6 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { HistoricalEvent } from '@entities/HistoricalEvent';
+import { HistoricalEvent as HistoricalEventType } from '@entities/HistoricalEvent/types';
 import { useHistoricalDatesStore } from '@widgets/HistoricalDates/stores/historicalDates.store';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
@@ -14,6 +15,20 @@ interface Props {
 
 export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
   const { events } = useHistoricalDatesStore();
+
+  const [visibleEvents, setVisibleEvents] = useState<HistoricalEventType[]>([]);
+  const [opacity, setOpacity] = useState<0 | 1>(1);
+
+  useEffect(() => {
+    setOpacity(0);
+    setTimeout(() => {
+      setOpacity(1);
+      setVisibleEvents(events);
+      if (swiperRef.current) {
+        swiperRef.current.slideTo(0, 0);
+      }
+    }, 300);
+  }, [events]);
 
   const swiperRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState<boolean>(true);
@@ -65,6 +80,7 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
       className="event-swiper"
       style={{
         gridTemplateColumns: hasNav ? `${paddingHorizontal}px auto ${paddingHorizontal}px` : 'auto',
+        opacity: opacity,
       }}
     >
       {hasNav && !isBeginning && (
@@ -96,7 +112,7 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
             margin: hasNav ? 'unset' : `0 ${paddingHorizontal}px`,
           }}
         >
-          {events.map((event, index) => (
+          {visibleEvents.map((event, index) => (
             <SwiperSlide key={index}>
               <HistoricalEvent event={event} />
             </SwiperSlide>
