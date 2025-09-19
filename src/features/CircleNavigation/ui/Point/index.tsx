@@ -4,13 +4,12 @@ import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/histo
 interface Props {
   index: number;
   rotation: number;
-  rotateCircle: () => void;
   radius?: number;
   onRef?: (el: SVGGElement | null) => void;
 }
 
-export const Point: FC<Props> = ({ index, rotation, rotateCircle, radius = 120, onRef }) => {
-  const { currentSectionIndex, totalSections } = useHistoricalEventsStore();
+export const Point: FC<Props> = ({ index, rotation, radius = 265, onRef }) => {
+  const { currentSectionIndex, totalSections, setCurrentSection } = useHistoricalEventsStore();
   const isSelected = currentSectionIndex === index;
   const getPointPosition = (): { x: number; y: number } => {
     const angle = (index * 360) / totalSections - 90;
@@ -26,7 +25,7 @@ export const Point: FC<Props> = ({ index, rotation, rotateCircle, radius = 120, 
       ref={onRef}
       transform={`translate(${position.x}, ${position.y}) rotate(${-rotation})`}
       cursor="pointer"
-      onClick={rotateCircle}
+      onClick={() => setCurrentSection(index)}
     >
       <circle r="15" fill={isSelected ? 'red' : 'blue'} strokeWidth="2" />
       <text

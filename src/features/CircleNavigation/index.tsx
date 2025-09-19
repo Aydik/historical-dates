@@ -1,21 +1,28 @@
-import { useRef, useState, useCallback, FC } from 'react';
+import { useRef, useState, useCallback, FC, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Point } from './ui/Point';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 
 export const CircleNavigation: FC = () => {
-  const { currentSectionIndex, sections, totalSections, setCurrentSection } =
-    useHistoricalEventsStore();
+  const { currentSectionIndex, sections, totalSections } = useHistoricalEventsStore();
 
+  const indexRef = useRef<number>(0);
   const circleRef = useRef<SVGSVGElement>(null);
   const pointsRef = useRef<Array<SVGGElement | null>>([]);
   const [rotation, setRotation] = useState<number>(0);
+
+  const handlePointRef = useCallback(
+    (index: number) => (el: SVGGElement | null) => {
+      pointsRef.current[index] = el;
+    },
+    [],
+  );
 
   const rotateCircle = useCallback(
     (targetIndex: number): void => {
       const anglePerPoint = 360 / totalSections;
 
-      const direct_steps = currentSectionIndex - targetIndex;
+      const direct_steps = indexRef.current - targetIndex;
       const reverse_steps =
         direct_steps > 0 ? direct_steps - totalSections : direct_steps + totalSections;
 
@@ -24,7 +31,7 @@ export const CircleNavigation: FC = () => {
       const newRotation = rotation + diff * anglePerPoint;
 
       setRotation(newRotation);
-      setCurrentSection(targetIndex);
+      indexRef.current = targetIndex;
 
       if (circleRef.current) {
         gsap.to(circleRef.current, {
@@ -46,15 +53,12 @@ export const CircleNavigation: FC = () => {
         });
       }
     },
-    [currentSectionIndex, rotation, setCurrentSection, totalSections],
+    [rotation, totalSections],
   );
 
-  const handlePointRef = useCallback(
-    (index: number) => (el: SVGGElement | null) => {
-      pointsRef.current[index] = el;
-    },
-    [],
-  );
+  useEffect(() => {
+    rotateCircle(currentSectionIndex);
+  }, [currentSectionIndex, rotateCircle]);
 
   return (
     <div
@@ -70,24 +74,18 @@ export const CircleNavigation: FC = () => {
       }}
     >
       <div>
-        <div style={{ position: 'relative', width: '300px', height: '300px' }}>
+        <div style={{ position: 'relative', width: '600px', height: '600px' }}>
           <svg
             ref={circleRef}
-            width="300"
-            height="300"
-            viewBox="-150 -150 300 300"
+            width="600"
+            height="600"
+            viewBox="-300 -300 600 600"
             style={{ position: 'absolute' }}
           >
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#333" strokeWidth="2" />
+            <circle cx="0" cy="0" r="265" fill="none" stroke="#333" strokeWidth="2" />
 
             {sections.map((section, index) => (
-              <Point
-                key={index}
-                index={index}
-                rotation={rotation}
-                rotateCircle={() => rotateCircle(index)}
-                onRef={handlePointRef(index)}
-              />
+              <Point key={index} index={index} rotation={rotation} onRef={handlePointRef(index)} />
             ))}
           </svg>
         </div>
