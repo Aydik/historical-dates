@@ -12,6 +12,7 @@ interface HistoricalEventsStore {
   getPrevSection: () => void;
   getNextSection: () => void;
   setCurrentSection: (index: number) => void;
+  sections: { index: number; name: string }[];
 }
 
 export const useHistoricalEventsStore = create<HistoricalEventsStore>((set, get) => ({
@@ -21,6 +22,7 @@ export const useHistoricalEventsStore = create<HistoricalEventsStore>((set, get)
   dateFrom: 2015,
   dateTo: 2020,
   events: [],
+  sections: HISTORICAL_DATES.map((section, index) => ({ name: section.name, index })),
 
   getPrevSection: () => {
     const { currentSectionIndex, setCurrentSection } = get();
@@ -58,7 +60,7 @@ export const useHistoricalEventsStore = create<HistoricalEventsStore>((set, get)
 
 const initializeStore = () => {
   const store = useHistoricalEventsStore.getState();
-  store.setCurrentSection(1);
+  store.setCurrentSection(0);
 };
 
 initializeStore();

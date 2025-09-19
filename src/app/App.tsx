@@ -1,11 +1,13 @@
 import styles from './App.module.scss';
-import { HistoricalEvents } from '@widgets/HistoricalEvents';
+// import { HistoricalEvents } from '@widgets/HistoricalEvents';
+import { CircleNavigation } from '@features/CircleNavigation';
 
 function App() {
   return (
     <div className={styles.layout}>
       <div className={styles.content}>
-        <HistoricalEvents />
+        {/*<HistoricalEvents />*/}
+        <CircleNavigation />
       </div>
     </div>
   );
