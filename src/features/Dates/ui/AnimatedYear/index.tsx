@@ -8,7 +8,7 @@ interface Props {
   ease?: string;
 }
 
-export const AnimatedYear: FC<Props> = ({ type, duration = 0.7, ease = 'power2.out' }) => {
+export const AnimatedYear: FC<Props> = ({ type, duration = 0.6, ease = 'power2.out' }) => {
   const { dateFrom, dateTo } = useHistoricalEventsStore();
   const year = type === 'prev' ? dateFrom : dateTo;
 
