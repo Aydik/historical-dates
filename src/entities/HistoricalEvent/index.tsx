@@ -22,11 +22,11 @@ export const HistoricalEvent: FC<Props> = ({ event }) => {
       break;
     case 'xl':
     case 'lg':
+    case 'md':
       maxWidth = 350;
       dateSize = 20;
       descriptionSize = 18;
       break;
-    case 'md':
     case 'sm':
       maxWidth = 300;
       dateSize = 18;
