@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { HISTORICAL_DATES } from '../mocks';
 import { HistoricalEvent } from '@entities/HistoricalEvent/types';
 
-interface HistoricalDatesStore {
+interface HistoricalEventsStore {
   totalSections: number;
   currentSectionIndex: number;
   currentName: string;
@@ -14,7 +14,7 @@ interface HistoricalDatesStore {
   setCurrentSection: (index: number) => void;
 }
 
-export const useHistoricalDatesStore = create<HistoricalDatesStore>((set, get) => ({
+export const useHistoricalEventsStore = create<HistoricalEventsStore>((set, get) => ({
   totalSections: HISTORICAL_DATES.length,
   currentSectionIndex: 0,
   currentName: 'Спорт',
@@ -57,7 +57,7 @@ export const useHistoricalDatesStore = create<HistoricalDatesStore>((set, get) =
 }));
 
 const initializeStore = () => {
-  const store = useHistoricalDatesStore.getState();
+  const store = useHistoricalEventsStore.getState();
   store.setCurrentSection(1);
 };
 

@@ -1,6 +1,6 @@
-import { HistoricalDates } from '@widgets/HistoricalDates/types';
+import { HistoricalEvents } from '@widgets/HistoricalEvents/types';
 
-export const HISTORICAL_DATES: HistoricalDates = [
+export const HISTORICAL_DATES: HistoricalEvents = [
   {
     name: 'Спорт',
     events: [

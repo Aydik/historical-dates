@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
-import { useHistoricalDatesStore } from '@widgets/HistoricalDates/stores/historicalDates.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 import { useBreakpoint } from '@shared/context/Breakpoints';
 
 export const SectionPagination: FC = () => {
   const { currentSectionIndex, totalSections, getPrevSection, getNextSection } =
-    useHistoricalDatesStore();
+    useHistoricalEventsStore();
 
   const breakpoint = useBreakpoint();
 

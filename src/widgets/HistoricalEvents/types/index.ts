@@ -5,4 +5,4 @@ export interface HistoricalSection {
   events: HistoricalEvent[];
 }
 
-export type HistoricalDates = HistoricalSection[];
+export type HistoricalEvents = HistoricalSection[];

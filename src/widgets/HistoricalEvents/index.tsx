@@ -5,8 +5,9 @@ import { useBreakpoint, compareBreakpoints } from '@shared/context/Breakpoints';
 import { Title } from './ui/Title';
 import { SectionPagination } from '@features/SectionPagination';
 import { HistoricalEventSwiper } from '@features/HistoricalEventSwiper';
+import { Dates } from '@features/Dates';
 
-export const HistoricalDates: FC = () => {
+export const HistoricalEvents: FC = () => {
   const breakpoint = useBreakpoint();
   const isXLBreakpoint = compareBreakpoints(breakpoint, 'xl');
 
@@ -40,12 +41,13 @@ export const HistoricalDates: FC = () => {
 
   return (
     <div
-      className={classNames(styles.historicalDates, {
+      className={classNames(styles.HistoricalEvents, {
         [styles.withBorders]: isXLBreakpoint,
       })}
       style={{ paddingTop: paddingTop }}
     >
       <Title paddingHorizontal={paddingHorizontal} />
+      <Dates />
       <SectionPagination />
       <HistoricalEventSwiper paddingHorizontal={paddingHorizontal} />
     </div>

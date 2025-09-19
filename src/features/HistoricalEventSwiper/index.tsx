@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { HistoricalEvent } from '@entities/HistoricalEvent';
 import { HistoricalEvent as HistoricalEventType } from '@entities/HistoricalEvent/types';
-import { useHistoricalDatesStore } from '@widgets/HistoricalDates/stores/historicalDates.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
-  const { events } = useHistoricalDatesStore();
+  const { events } = useHistoricalEventsStore();
 
   const [visibleEvents, setVisibleEvents] = useState<HistoricalEventType[]>([]);
   const [opacity, setOpacity] = useState<0 | 1>(1);
