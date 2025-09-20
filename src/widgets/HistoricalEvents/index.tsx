@@ -8,6 +8,7 @@ import { HistoricalEventSwiper } from '@features/HistoricalEventSwiper';
 import { Dates } from '@features/Dates';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 import { CircleNavigation } from '@features/CircleNavigation';
+import { DotsNavigation } from '@features/DotsNavigation';
 
 export const HistoricalEvents: FC = () => {
   const { currentName } = useHistoricalEventsStore();
@@ -84,12 +85,15 @@ export const HistoricalEvents: FC = () => {
           )}
           <HistoricalEventSwiper paddingHorizontal={paddingHorizontal} />
           {!isDesktop && (
-            <>
-              <div style={{ paddingLeft: paddingHorizontal }}>
-                <SectionPagination />
+            <div
+              className={styles.navigationMobile}
+              style={{ paddingLeft: paddingHorizontal, paddingRight: paddingHorizontal }}
+            >
+              <SectionPagination />
+              <div className={styles.dotsNavigationWrapper}>
+                <DotsNavigation />
               </div>
-              <div className={styles.navigationWrapper}>......</div>
-            </>
+            </div>
           )}
         </div>
       </div>
