@@ -24,6 +24,7 @@ export const HistoricalEventSwiper: FC<Props> = ({ paddingHorizontal }) => {
     setTimeout(() => {
       setOpacity(1);
       setVisibleEvents(events);
+      setIsEnd(false);
       if (swiperRef.current) {
         swiperRef.current.slideTo(0, 0);
       }
