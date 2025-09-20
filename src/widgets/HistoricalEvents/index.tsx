@@ -19,34 +19,40 @@ export const HistoricalEvents: FC = () => {
   let paddingBottom: number;
   let paddingTop: number;
   let paddingHorizontal: number;
+  let circleNav: number;
 
   switch (breakpoint) {
     case 'xxl':
       paddingBottom = 104;
       paddingTop = 170;
       paddingHorizontal = 80;
+      circleNav = 500;
       break;
     case 'xl':
     case 'lg':
       paddingBottom = 80;
       paddingTop = 120;
       paddingHorizontal = 70;
+      circleNav = 500;
       break;
     case 'md':
       paddingBottom = 48;
       paddingTop = 100;
       paddingHorizontal = 60;
+      circleNav = 450;
       break;
     case 'sm':
       paddingBottom = 32;
       paddingTop = 80;
       paddingHorizontal = 24;
+      circleNav = 200;
       break;
     case 'xs':
     default:
       paddingBottom = 14;
       paddingTop = 60;
       paddingHorizontal = 20;
+      circleNav = 200;
       break;
   }
 
@@ -89,9 +95,22 @@ export const HistoricalEvents: FC = () => {
       </div>
       {isDesktop && (
         <>
-          <div className={classNames(styles.line, styles.lineHorizontal)} />
+          <div
+            className={classNames(styles.line, styles.lineHorizontal)}
+            style={{
+              top: circleNav / 2 + paddingTop - 50,
+            }}
+          />
           <div className={classNames(styles.line, styles.lineVertical)} />
-          <div className={styles.circleWrapper}>
+          <div
+            className={styles.circleWrapper}
+            style={{
+              height: circleNav,
+              width: circleNav,
+              top: paddingTop - 50,
+              left: `calc((100% - ${circleNav}px) / 2)`,
+            }}
+          >
             <CircleNavigation />
           </div>
         </>

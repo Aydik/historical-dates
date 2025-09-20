@@ -4,7 +4,11 @@ import { gsap } from 'gsap';
 import { Point } from './ui/Point';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 
-export const CircleNavigation: FC = () => {
+interface Props {
+  radius?: number;
+}
+
+export const CircleNavigation: FC<Props> = ({ radius = 265 }) => {
   const { currentName, currentSectionIndex, sections, totalSections } = useHistoricalEventsStore();
 
   const anglePerPoint = 360 / totalSections;
@@ -15,8 +19,8 @@ export const CircleNavigation: FC = () => {
 
   const [rotation, setRotation] = useState<number>(90 - anglePerPoint);
 
-  const nameX = Math.cos(((-rotation - anglePerPoint) * Math.PI) / 180) * 265;
-  const nameY = Math.sin(((-rotation - anglePerPoint) * Math.PI) / 180) * 265;
+  const nameX = Math.cos(((-rotation - anglePerPoint) * Math.PI) / 180) * radius;
+  const nameY = Math.sin(((-rotation - anglePerPoint) * Math.PI) / 180) * radius;
 
   const handlePointRef = useCallback(
     (index: number) => (el: SVGGElement | null) => {
@@ -83,10 +87,13 @@ export const CircleNavigation: FC = () => {
 
   return (
     <div className={styles.circleWrapper}>
-      <svg ref={circleRef} viewBox="-365 -365 730 730">
-        <circle className={styles.circle} cx="0" cy="0" r="265" fill="none" strokeWidth="1" />
+      <svg
+        ref={circleRef}
+        viewBox={`-${radius + 100} -${radius + 100} ${(radius + 100) * 2} ${(radius + 100) * 2}`}
+      >
+        <circle className={styles.circle} cx="0" cy="0" r={radius} fill="none" strokeWidth="1" />
         {sections.map((_, index) => (
-          <Point key={index} index={index} radius={265} onRef={handlePointRef(index)} />
+          <Point key={index} index={index} radius={radius} onRef={handlePointRef(index)} />
         ))}
         <text
           ref={nameRef}
