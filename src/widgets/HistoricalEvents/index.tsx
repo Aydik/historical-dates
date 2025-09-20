@@ -103,6 +103,17 @@ export const HistoricalEvents: FC = () => {
           />
           <div className={classNames(styles.line, styles.lineVertical)} />
           <div
+            className={styles.datesWrapperDesktop}
+            style={{
+              left: 0,
+              width: '100%',
+              top: paddingTop - 50,
+              height: circleNav,
+            }}
+          >
+            <Dates />
+          </div>
+          <div
             className={styles.circleWrapper}
             style={{
               height: circleNav,

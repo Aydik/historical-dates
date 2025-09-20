@@ -51,6 +51,13 @@
   position: absolute;
 }
 
+.datesWrapperDesktop{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .line {
   position: absolute;
   background-color: rgba(var(--color-black-blue-rgb), 0.1);
