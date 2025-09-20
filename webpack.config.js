@@ -7,6 +7,7 @@ module.exports = {
   entry: './src/app/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/historical-dates/',
     filename: 'bundle.js',
     clean: true,
   },
