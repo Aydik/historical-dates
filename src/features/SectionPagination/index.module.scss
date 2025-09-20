@@ -20,14 +20,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.2s;
 
   &Prev {
     transform: scale(-1, 1);
   }
 
-  &Disabled{
+  &:hover {
+    background: white;
+  }
+
+  &Disabled {
     cursor: default;
     opacity: 0.5;
+
+    &:hover {
+      background: unset;
+    }
   }
 
   svg {
