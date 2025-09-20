@@ -9,11 +9,11 @@ export const Dates: FC = () => {
   let fontSize: number;
   switch (breakpoint) {
     case 'xxl':
-      fontSize = 200;
+      fontSize = 160;
       break;
     case 'xl':
     case 'lg':
-      fontSize = 160;
+      fontSize = 140;
       break;
     case 'md':
       fontSize = 120;

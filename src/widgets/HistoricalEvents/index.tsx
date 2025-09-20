@@ -26,7 +26,7 @@ export const HistoricalEvents: FC = () => {
       paddingBottom = 104;
       paddingTop = 170;
       paddingHorizontal = 80;
-      circleNav = 500;
+      circleNav = 550;
       break;
     case 'xl':
     case 'lg':
