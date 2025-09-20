@@ -1,0 +1,35 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        }
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@app": "./src/app",
+          "@pages": "./src/pages",
+          "@widgets": "./src/widgets",
+          "@features": "./src/features",
+          "@entities": "./src/entities",
+          "@shared": "./src/shared"
+        }
+      }
+    ]
+  ]
+}
