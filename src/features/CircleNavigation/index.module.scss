@@ -1,0 +1,18 @@
+.circleWrapper{
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  max-height: 100vh;
+}
+
+.circle{
+  stroke: rgba(var(--color-black-blue-rgb), 0.2);
+}
+
+.name{
+  transition: opacity 0.3s;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  fill: var(--color-black-blue);
+}

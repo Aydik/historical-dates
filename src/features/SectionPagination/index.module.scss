@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: var(--color-black-blue);
+}
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: var(--color-black-blue);
+  border: 1px solid rgba(var(--color-black-blue-rgb), 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+
+  &Prev {
+    transform: scale(-1, 1);
+  }
+
+  &:hover {
+    background: white;
+  }
+
+  &Disabled {
+    cursor: default;
+    opacity: 0.5;
+
+    &:hover {
+      background: unset;
+    }
+  }
+
+  svg {
+    transform: translateX(20%);
+  }
+}

@@ -1,0 +1,18 @@
+.navButton{
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  color: var(--color-blue);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(var(--color-blue-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transform: translateX(20%);
+  }
+}

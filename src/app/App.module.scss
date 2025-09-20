@@ -1,8 +1,10 @@
 .layout {
-  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 2fr minmax(auto, 1440px) 1fr;
 }
 
 .content {
-  background-color: red;
+  grid-column: 2;
   width: 100%;
+  max-width: 1440px;
 }

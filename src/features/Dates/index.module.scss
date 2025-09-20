@@ -1,0 +1,13 @@
+.date{
+  font-weight: bold;
+  text-align: center;
+  line-height: min(160px, 1em);
+
+  & span:first-child{
+    color: var(--color-blue);
+  }
+
+  & span:last-child{
+    color: var(--color-fuschia);
+  }
+}

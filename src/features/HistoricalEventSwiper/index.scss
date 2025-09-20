@@ -1,0 +1,26 @@
+.event-swiper {
+  position: relative;
+  max-width: 100%;
+  display: grid;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swiper-container {
+  overflow: hidden;
+  grid-column: 2;
+  max-width: 100%;
+}
+
+.swiper-wrapper {
+  cursor: grab;
+}
+
+.swiper-slide {
+  width: unset;
+}
+
+.nav-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

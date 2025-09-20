@@ -1,0 +1,36 @@
+.point {
+  cursor: pointer;
+
+  .circle {
+    transition: 0.3s;
+    stroke-width: 1px;
+    stroke: rgba(var(--color-black-blue-rgb), 0.5);
+    fill: var(--color-black-blue);
+    transform: scale(0.15);
+  }
+
+  .index {
+    transition: 0.3s;
+    opacity: 0;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: 20px;
+    line-height: 30px;
+    fill: var(--color-black-blue);
+  }
+
+  &Selected, &:hover {
+    .index {
+      opacity: 1;
+    }
+
+    .circle {
+      fill: var(--color-background);
+      transform: scale(1);
+    }
+  }
+
+  &Selected {
+    cursor: default;
+  }
+}
