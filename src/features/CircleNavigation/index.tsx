@@ -4,18 +4,19 @@ import { gsap } from 'gsap';
 import { Point } from './ui/Point';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
 
-interface Props {
-  radius?: number;
-}
-
-export const CircleNavigation: FC<Props> = ({ radius = 265 }) => {
-  const { currentSectionIndex, sections, totalSections } = useHistoricalEventsStore();
+export const CircleNavigation: FC = () => {
+  const { currentName, currentSectionIndex, sections, totalSections } = useHistoricalEventsStore();
 
   const anglePerPoint = 360 / totalSections;
   const indexRef = useRef<number>(0);
   const circleRef = useRef<SVGSVGElement>(null);
   const pointsRef = useRef<Array<SVGGElement | null>>([]);
+  const nameRef = useRef<SVGTextElement>(null);
+
   const [rotation, setRotation] = useState<number>(90 - anglePerPoint);
+
+  const nameX = Math.cos(((-rotation - anglePerPoint) * Math.PI) / 180) * 265;
+  const nameY = Math.sin(((-rotation - anglePerPoint) * Math.PI) / 180) * 265;
 
   const handlePointRef = useCallback(
     (index: number) => (el: SVGGElement | null) => {
@@ -64,23 +65,38 @@ export const CircleNavigation: FC<Props> = ({ radius = 265 }) => {
     rotateCircle(currentSectionIndex);
   }, [currentSectionIndex, rotateCircle]);
 
+  useEffect(() => {
+    gsap
+      .timeline()
+      .to(nameRef.current, {
+        opacity: 0,
+        display: 'none',
+        duration: 0,
+      })
+      .to(nameRef.current, {
+        display: 'unset',
+        opacity: 1,
+        duration: 0.15,
+        delay: 0.3,
+      });
+  }, [currentSectionIndex]);
+
   return (
     <div className={styles.circleWrapper}>
-      <svg
-        ref={circleRef}
-        viewBox={`-${radius + 100} -${radius + 100} ${radius * 2 + 200} ${radius * 2 + 200}`}
-      >
-        <circle className={styles.circle} cx="0" cy="0" r={radius} fill="none" strokeWidth="1" />
-        {sections.map((section, index) => (
-          <Point
-            key={index}
-            name={section.name}
-            index={index}
-            radius={radius}
-            rotation={rotation}
-            onRef={handlePointRef(index)}
-          />
+      <svg ref={circleRef} viewBox="-365 -365 730 730">
+        <circle className={styles.circle} cx="0" cy="0" r="265" fill="none" strokeWidth="1" />
+        {sections.map((_, index) => (
+          <Point key={index} index={index} radius={265} onRef={handlePointRef(index)} />
         ))}
+        <text
+          ref={nameRef}
+          className={styles.name}
+          transform={`translate(${nameX}, ${nameY}) rotate(${-rotation})`}
+          x={47}
+          y={5}
+        >
+          {currentName}
+        </text>
       </svg>
     </div>
   );

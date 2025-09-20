@@ -7,6 +7,7 @@ import { SectionPagination } from '@features/SectionPagination';
 import { HistoricalEventSwiper } from '@features/HistoricalEventSwiper';
 import { Dates } from '@features/Dates';
 import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { CircleNavigation } from '@features/CircleNavigation';
 
 export const HistoricalEvents: FC = () => {
   const { currentName } = useHistoricalEventsStore();
@@ -86,6 +87,15 @@ export const HistoricalEvents: FC = () => {
           )}
         </div>
       </div>
+      {isDesktop && (
+        <>
+          <div className={classNames(styles.line, styles.lineHorizontal)} />
+          <div className={classNames(styles.line, styles.lineVertical)} />
+          <div className={styles.circleWrapper}>
+            <CircleNavigation />
+          </div>
+        </>
+      )}
     </div>
   );
 };
