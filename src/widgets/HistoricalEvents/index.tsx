@@ -106,9 +106,9 @@ export const HistoricalEvents: FC = () => {
             className={styles.datesWrapperDesktop}
             style={{
               left: 0,
-              width: '100%',
-              top: paddingTop - 50,
-              height: circleNav,
+              right: 0,
+              top: circleNav / 2 + paddingTop - 50 - 100,
+              height: 200,
             }}
           >
             <Dates />
