@@ -64,7 +64,7 @@ export const HistoricalEvents: FC = () => {
       style={{ paddingTop: paddingTop, paddingBottom: paddingBottom }}
     >
       <Title paddingHorizontal={paddingHorizontal} />
-      {/*<Dates />*/}
+      {!isDesktop && <Dates />}
       <div className={styles.eventsWrapper} style={{ height: isDesktop ? '35vh' : '45vh' }}>
         {!isDesktop && (
           <>
