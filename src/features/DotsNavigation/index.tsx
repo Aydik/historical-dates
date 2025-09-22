@@ -13,10 +13,12 @@ export const DotsNavigation: FC = () => {
           <button
             key={index}
             onClick={isSelected ? undefined : () => setCurrentSection(index)}
-            className={classNames(styles.dot, {
-              [styles.dotSelected]: isSelected,
+            className={classNames(styles.button, {
+              [styles.buttonSelected]: isSelected,
             })}
-          />
+          >
+            <div className={styles.dot} />
+          </button>
         );
       })}
     </div>

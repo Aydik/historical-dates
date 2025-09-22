@@ -1,17 +1,20 @@
 .navigation {
   display: flex;
-  gap: 10px;
 }
 
-.dot {
+.button {
   all: unset;
   cursor: pointer;
-  width: 6px;
-  height: 6px;
-  border-radius: 6px;
-  background-color: var(--color-black-blue);
-  transition: 0.2s;
   opacity: 0.4;
+  transition: 0.2s;
+  padding: 5px;
+
+  .dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: var(--color-black-blue);
+  }
 
   &Selected {
     cursor: default;
