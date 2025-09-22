@@ -6,7 +6,7 @@ import { Title } from './ui/Title';
 import { SectionPagination } from '@features/SectionPagination';
 import { HistoricalEventSwiper } from '@features/HistoricalEventSwiper';
 import { Dates } from '@features/Dates';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 import { CircleNavigation } from '@features/CircleNavigation';
 import { DotsNavigation } from '@features/DotsNavigation';
 

@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 
 interface Props {
   type: 'prev' | 'next';

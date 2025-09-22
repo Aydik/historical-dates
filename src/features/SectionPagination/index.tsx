@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 import { useBreakpoint } from '@shared/context/Breakpoints';
 
 export const SectionPagination: FC = () => {

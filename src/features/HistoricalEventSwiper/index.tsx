@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { HistoricalEvent } from '@entities/HistoricalEvent';
 import { HistoricalEvent as HistoricalEventType } from '@entities/HistoricalEvent/types';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';

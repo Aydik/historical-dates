@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 import classNames from 'classnames';
 
 interface Props {

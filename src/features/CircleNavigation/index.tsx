@@ -2,7 +2,7 @@ import { useRef, useState, useCallback, FC, useEffect } from 'react';
 import styles from './index.module.scss';
 import { gsap } from 'gsap';
 import { Point } from './ui/Point';
-import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.store';
+import { useHistoricalEventsStore } from '@widgets/HistoricalEvents/stores/historicalEvents.context';
 
 interface Props {
   radius?: number;
